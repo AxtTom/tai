@@ -9,5 +9,16 @@ import express from 'express';
 
     app.use('/', express.static(`${__dirname}/../vue_tai/dist`));
 
-    
+    app.get('/api', async (req, res) => {
+        res.send('Hallo Welt!');
+        res.end();
+    });
+
+    server.listen(8999, 'localhost', () => {
+        console.log('Server running!');
+    });
+
+    process.on('uncaughtException', (err) => {
+        console.error(err);
+    });
 })();
