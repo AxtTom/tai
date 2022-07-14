@@ -7,6 +7,8 @@
 body {
     color: #fff;
     background-color: #223;
+    margin: 0;
+    width: 100%;
 }
 
 a {

@@ -1,5 +1,5 @@
 <template>
-    <img src="../assets/autorenew.svg">
+    <img src="../assets/svg/autorenew.svg">
 </template>
 
 <style scoped>

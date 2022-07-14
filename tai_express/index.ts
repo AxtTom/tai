@@ -1,6 +1,7 @@
 import * as http from 'http';
 import express from 'express';
 import { MongoClient } from 'mongodb';
+import { UserApi } from './api/user';
 
 (async () => {
     console.log('Connecting to DB...');
@@ -9,8 +10,8 @@ import { MongoClient } from 'mongodb';
     const db = mongo.db('tai');
     console.log('Connected to DB');
 
-    const users = db.collection('users');
-    const foodlist = db.collection('foodlist');
+    global.users = db.collection('users');
+    global.foodlist = db.collection('foodlist');
 
     const app = express()
     .disable('x-powered-by')
@@ -19,10 +20,7 @@ import { MongoClient } from 'mongodb';
 
     app.use('/', express.static(`${__dirname}/../vue_tai/dist`));
 
-    app.get('/api', async (req, res) => {
-        res.send('Hallo Welt!');
-        res.end();
-    });
+    UserApi(app);
 
     server.listen(8999, 'localhost', () => {
         console.log('Server running!');
