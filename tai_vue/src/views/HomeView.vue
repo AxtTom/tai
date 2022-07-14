@@ -1,18 +1,20 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import axios from 'axios';
+import Spinner from '../components/Spinner.vue';
 
 export default defineComponent({
-  data() {
-    return {
-      msg: null
-    }
-  },
-  mounted() {
-    axios.get('/api').then(res => {
-      this.msg = res.data;
-    });
-  }
+    data() {
+        return {
+            msg: null
+        };
+    },
+    mounted() {
+        axios.get("/api").then(res => {
+            this.msg = res.data;
+        });
+    },
+    components: { Spinner }
 });
 </script>
 
